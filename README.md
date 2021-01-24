@@ -35,6 +35,7 @@ It will list you the projects templates.
 - `package` (e.g. `com.corposense.app`)
 then enter `Y` to confirm and create the project.
 P.S. The project should be created along with `pom.xml` (Project Object Model).
+
 4- Compile the build the project:
 ```
 mvn compile
@@ -44,3 +45,32 @@ mvn package
 ```
 java -cp target\HelloMaven-1.0-SNAPSHOT.jar com.corposense.app.App
 ```
+
+## Plugins:
+Mave uses plugin architecture, you add your plugins to the `<build>` section in the `pom.xml` file.
+- Example:
+You can search for `jetty-maven-plugin` plugin and add it to your maven web app:
+```
+  <build>
+    <finalName>MavenWebApp</finalName>
+        
+    <plugins>
+		<plugin>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-maven-plugin</artifactId>
+		   <version>9.4.36.v20210114</version>
+		    <configuration>
+		      <webApp>
+		        <contextPath>/MavenWebApp</contextPath>
+		      </webApp>
+		   </configuration>
+		 </plugin>
+    </plugins>
+    
+  </build>
+```
+
+You can then run your web-app using the embedded jetty server using:
+`mvn jetty:run`
+
+ 
