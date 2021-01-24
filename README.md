@@ -16,6 +16,7 @@ The general syntax looks like: `mvn [<plugin-prefix>][:<plugin-version>]:<goal>`
 
 ## Maven Lifecycle
 Available -default- lifecycle phases are:
+
 ```
 mvn validate # make sure the project is valid
 mvn compile # compile the source of the project
@@ -63,16 +64,16 @@ Mave uses plugin architecture, you add your plugins to the `<build>` section in 
 1- Executing java app:
 By default maven deson't include plugin to execute java app, you add the follwing lines to your `pom.xml` in order to run a java app:
 
-```
-      <!-- Java Execution -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.0.0</version>
-        <configuration>
-          <mainClass>com.corposense.app.App</mainClass>
-        </configuration>
-      </plugin>
+```xml
+  <!-- Java Execution -->
+  <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.0.0</version>
+    <configuration>
+      <mainClass>com.corposense.app.App</mainClass>
+    </configuration>
+  </plugin>
 ```
 Then you can execute the app like so:
 ```
@@ -84,9 +85,10 @@ To more about this plugin (or any other plugin), you can use `help:describe` goa
 mvn help:describe -Dplugin=org.codehaus.mojo:exec-maven-plugin -Ddetail=true
 ```
 
-1- Jetty Maven Plugin:
+2- Jetty Maven Plugin:
 You can search for `jetty-maven-plugin` plugin and add it to your maven web app:
-```
+
+```xml
   <build>
     <finalName>MavenWebApp</finalName>
     <plugins>
@@ -111,23 +113,25 @@ or you can specify the port:
 `mvn -Djetty.port=9090 jetty:run`
 The app should be running on: `http://localhost:9090/MavenWebApp` where `MavenWebApp` is the name (or `artifactId`) of your app. 
 
- 2- Tomcat Plugin:
+ 3- Tomcat Plugin:
  You can also use tomcat-maven plugin instead of jetty by adding these lines to your `pom.xml`:
- ```
- 		<plugins>
- 		...
-         <!-- Tomcat Plugin -->
-        <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.2</version>
-        </plugin>
-      </plugins>
- ```
+```xml
+ <plugins>
+	...
+     <!-- Tomcat Plugin -->
+    <plugin>
+      <groupId>org.apache.tomcat.maven</groupId>
+      <artifactId>tomcat7-maven-plugin</artifactId>
+      <version>2.2</version>
+    </plugin>
+</plugins>
+```
+
  You can then run your web-app using the embedded jetty server using:
 `mvn tomcat7:run`
  
-3- Creating a Micronaut WebApp:
+4- Creating a Micronaut WebApp:
+
 The easy way is to start from [Micronaut Launch](https://micronaut.io/launch/) website, then set the following settings:
 - Application Type: Micronaut Application
 - Java Version: 8
@@ -144,7 +148,8 @@ mvn compile
 mvn mn:run
 ```
 The application should be running with an error, because there is no controller for the route url, you can create a simple controller with the follwing class:
-```
+
+```java
 package com.corposense; // Update to your package name
 
 import io.micronaut.http.MediaType;
