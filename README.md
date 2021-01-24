@@ -79,6 +79,10 @@ Then you can execute the app like so:
 mvn clean
 mvn compile exec:java
 ```
+To more about this plugin (or any other plugin), you can use `help:describe` goal of maven, here an example for `org.codehaus.mojo:exec-maven-plugin`:
+```
+mvn help:describe -Dplugin=org.codehaus.mojo:exec-maven-plugin -Ddetail=true
+```
 
 1- Jetty Maven Plugin:
 You can search for `jetty-maven-plugin` plugin and add it to your maven web app:
