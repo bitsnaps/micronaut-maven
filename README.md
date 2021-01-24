@@ -103,3 +103,42 @@ The app should be running on: `http://localhost:9090/MavenWebApp` where `MavenWe
  You can then run your web-app using the embedded jetty server using:
 `mvn tomcat7:run`
  
+3- Creating a Micronaut WebApp:
+The easy way is to start from (Micronaut Launch)[https://micronaut.io/launch/] website, then set the following settings:
+- Application Type: Micronaut Application
+- Java Version: 8
+- Base Package (e.g. com.corposense)
+- Name: Application name (e.g. demo)
+- Micronaut version (e.g. 2.3.0)
+- Language (e.g. Java)
+- Build: Maven
+- Test Framework: Junit
+and then click on `GENERATE PROJECET` then download the zip file.
+Extract the downloaded file to any directory then cd to that direcoty and enter:
+```
+mvn compile
+mvn mn:run
+```
+The application should be running with an error, because there is no controller for the route url, you can create a simple controller with the follwing class:
+```
+package com.corposense; // Update to your package name
+
+import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
+
+@Controller("/") 
+public class HelloController {
+
+    @Get(produces = MediaType.TEXT_HTML) 
+    public String index() {
+        return "<h1>Hello Micronaut!</h1>"; 
+    }
+}
+```
+Then run the application again, it should works.
+
+To test your app, just run:
+```
+mvn test
+```
