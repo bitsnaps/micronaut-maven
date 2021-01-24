@@ -69,6 +69,17 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        
+      <!-- Java Execution -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <mainClass>com.corposense.app.App</mainClass>
+        </configuration>
+      </plugin>
+              
       </plugins>
     </pluginManagement>
   </build>

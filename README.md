@@ -60,6 +60,26 @@ Mave uses plugin architecture, you add your plugins to the `<build>` section in 
 
 ### Examples:
 
+1- Executing java app:
+By default maven deson't include plugin to execute java app, you add the follwing lines to your `pom.xml` in order to run a java app:
+
+```
+      <!-- Java Execution -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <mainClass>com.corposense.app.App</mainClass>
+        </configuration>
+      </plugin>
+```
+Then you can execute the app like so:
+```
+mvn clean
+mvn compile exec:java
+```
+
 1- Jetty Maven Plugin:
 You can search for `jetty-maven-plugin` plugin and add it to your maven web app:
 ```
@@ -104,7 +124,7 @@ The app should be running on: `http://localhost:9090/MavenWebApp` where `MavenWe
 `mvn tomcat7:run`
  
 3- Creating a Micronaut WebApp:
-The easy way is to start from (Micronaut Launch)[https://micronaut.io/launch/] website, then set the following settings:
+The easy way is to start from [Micronaut Launch](https://micronaut.io/launch/) website, then set the following settings:
 - Application Type: Micronaut Application
 - Java Version: 8
 - Base Package (e.g. com.corposense)
