@@ -1,5 +1,6 @@
 package com.corposense.app;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -10,11 +11,14 @@ import org.junit.Test;
 public class AppTest 
 {
     /**
-     * Rigorous Test :-)
+     * Simple Test
      */
     @Test
-    public void shouldAnswerWithTrue()
+    public void shouldCalculateTotal()
     {
-        assertTrue( true );
+    	App app = new App();
+    	int total = app.getTotal(2, 3);
+        assertTrue( app != null );
+        assertEquals(total, 5);
     }
 }

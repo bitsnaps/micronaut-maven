@@ -10,4 +10,7 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+    public int getTotal(int x, int y) {
+    	return x + y;
+    }
 }
